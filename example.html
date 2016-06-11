@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>geneticalgorithm - example</title>
+
+    <script src="genetic.es6.js"></script>
+  </head>
+  <body>
+
+    <div id="cities">
+
+    </div>
+    <button type="button" name="run" onclick="run()">Run genetic</button> <i>Please wait a moment after click!</i>
+    <div id="result">
+
+    </div>
+
+    <script type="text/javascript">
+      let cities = [];
+      let citiesText = 'Cities: </br>[';
+      for( let i = 1; i <= 50; i++ ) {
+        cities.push(i);
+        i === 50 ? citiesText += `${i}]` : citiesText += `${i}, `;
+      }
+      document.getElementById("cities").innerHTML = citiesText;
+
+      costFunction = ( genes ) => {
+        let cost = 0;
+        for( let i = 0; i < genes.length; i++ ) {
+          if( i === 0 ) {
+            cost += Math.abs(genes[genes.length-1] - genes[i]);
+          }
+          else {
+            cost += Math.abs(genes[i] - genes[i-1]);
+          }
+        }
+        return cost;
+      }
+
+      run = () => {
+        let genetic = new GeneticAlgorithm( cities, costFunction, {
+          populationSize: 500,
+          amount: 300,
+          mutateProb: 0.7
+        });
+
+        let result = genetic.result();
+
+        let resultString = '[';
+        result.result.forEach( function(city) {
+          resultString += `${city} ->`;
+        });
+        resultString += `${result.result[0]}]`;
+        document.getElementById("result").innerHTML = `Result: </br> ${resultString} </br>Distance: ${result.cost}`;
+      }
+    </script>
+  </body>
+</html>
