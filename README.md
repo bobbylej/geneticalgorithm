@@ -2,17 +2,14 @@
 
 ## Introduction
 This provides you heuristic algorithm depends on [genetic algoritm](https://en.wikipedia.org/wiki/Genetic_algorithm) to find one of the best solution for problem of arrangement objects.
-
 To make this, you need to provide:
-
 **objects array** that you want to compare, (*for genetic*: this will give chromosomes to generate genes for solutions)
-
 **cost function** which return costs for specific arrangement of objects in array (*for genetic*: this determines the value of solution in population, *smaller mean better*).
 
 ## Getting started
-To import algorithm to your projects write
+To import algorith to your projects write
 ```bash
-git clone https://github.com/bobbylej/geneticalgorithm.git
+git clone https://github.com/bobbylej/SystemTaxi.git
 
 ```
 or download zip.
